@@ -1,0 +1,29 @@
+base_url = "https://devlog.arca.school"
+title = "Arca School DevLog"
+description = "Where classical wisdom meets modern craft — building an education platform from the ground up."
+default_language = "en"
+theme = ""
+compile_sass = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+build_search_index = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+smart_punctuation = true
+
+[extra]
+author = "Diego Bonesso"
+github = "https://github.com/DbonesDev"
+twitter = ""
+linkedin = ""
+tagline = "Building in public. Classical roots, modern code."
+
+[slugify]
+paths = "on"
+
+[search]
+include_title = true
+include_description = true
+include_content = true

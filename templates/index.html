@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <h1>Building <span class="accent">Arca School</span><br>in the open.</h1>
+    <p>A classical education platform built with Rust, intention, and care. Follow the journey from architecture to deployment.</p>
+    <a href="{{ get_url(path='@/blog/_index.md') }}" class="hero-cta">Read the DevLog</a>
+  </div>
+</section>
+
+<section class="container">
+  <div class="divider">Latest Posts</div>
+
+  <div class="posts-grid">
+    {% set blog = get_section(path="blog/_index.md") %}
+    {% for post in blog.pages | slice(end=5) %}
+    <article class="post-card">
+      <div class="post-meta">
+        <time datetime="{{ post.date }}">{{ post.date | date(format="%b %d, %Y") }}</time>
+        {% if post.taxonomies.tags %}
+          {% for tag in post.taxonomies.tags | slice(end=2) %}
+          <span class="post-tag">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+        {% if post.extra.reading_time %}
+        <span>{{ post.extra.reading_time }} min read</span>
+        {% endif %}
+      </div>
+      <h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      {% if post.description %}
+      <p>{{ post.description }}</p>
+      {% elif post.summary %}
+      <p>{{ post.summary | safe }}</p>
+      {% endif %}
+      <a href="{{ post.permalink }}" class="read-more">Continue reading</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

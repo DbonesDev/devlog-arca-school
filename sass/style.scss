@@ -1,0 +1,422 @@
+// =============================================================================
+// ARCA SCHOOL DEVLOG — Monastic Modern Theme
+// Classical typography + modern layout. Compelling, clean, timeless.
+// =============================================================================
+
+// --- Tokens ---
+$color-bg:         #FAFAF5;
+$color-bg-card:    #FFFFFF;
+$color-surface:    #F0EDE6;
+$color-text:       #1A1A1A;
+$color-text-muted: #6B6B6B;
+$color-accent:     #2D5F2D;       // sage green
+$color-accent-hover: #3D7A3D;
+$color-gold:       #B8860B;
+$color-border:     #E0DCD4;
+$color-code-bg:    #1D2433;
+
+$font-heading: 'Crimson Pro', 'Georgia', serif;
+$font-body:    'Inter', 'Helvetica Neue', sans-serif;
+$font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+$max-width:    720px;
+$max-width-wide: 960px;
+
+// --- Reset & Base ---
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: $font-body;
+  color: $color-text;
+  background: $color-bg;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  &:hover { color: $color-accent-hover; }
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+// --- Typography ---
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  font-weight: 600;
+  line-height: 1.25;
+  color: $color-text;
+}
+
+h1 { font-size: 2.4rem; letter-spacing: -0.02em; }
+h2 { font-size: 1.8rem; letter-spacing: -0.01em; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.1rem; }
+
+// --- Layout ---
+.container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container--wide {
+  max-width: $max-width-wide;
+}
+
+// --- Header ---
+.site-header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid $color-border;
+  background: $color-bg;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba($color-bg, 0.92);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: $max-width-wide;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-logo {
+  font-family: $font-heading;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  &:hover { color: $color-accent; }
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  background: $color-accent;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: $font-heading;
+}
+
+nav {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+  a {
+    color: $color-text-muted;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    &:hover { color: $color-accent; }
+    &.active { color: $color-accent; }
+  }
+}
+
+// --- Hero ---
+.hero {
+  padding: 5rem 0 4rem;
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+
+    .accent { color: $color-accent; }
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: $color-text-muted;
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.8rem;
+  background: $color-accent;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  &:hover {
+    background: $color-accent-hover;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($color-accent, 0.3);
+  }
+}
+
+// --- Divider ---
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+  color: $color-text-muted;
+  font-family: $font-heading;
+  font-size: 0.95rem;
+  font-style: italic;
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: $color-border;
+  }
+}
+
+// --- Post Cards ---
+.posts-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.post-card {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.25s ease;
+  &:hover {
+    border-color: $color-accent;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  color: $color-text-muted;
+}
+
+.post-tag {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  background: rgba($color-accent, 0.08);
+  color: $color-accent;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  a {
+    color: $color-text;
+    &:hover { color: $color-accent; }
+  }
+}
+
+.post-card p {
+  color: $color-text-muted;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  &::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+  &:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+// --- Blog Post (single) ---
+.post-header {
+  padding: 4rem 0 2rem;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post-meta {
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+}
+
+.post-content {
+  padding-bottom: 4rem;
+
+  p { margin-bottom: 1.5rem; }
+
+  h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid $color-border;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  ul, ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    li { margin-bottom: 0.4rem; }
+  }
+
+  blockquote {
+    border-left: 3px solid $color-accent;
+    padding: 0.8rem 1.2rem;
+    margin: 1.5rem 0;
+    background: $color-surface;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: $color-text-muted;
+    p { margin-bottom: 0; }
+  }
+
+  code {
+    font-family: $font-mono;
+    font-size: 0.85em;
+    background: $color-surface;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+
+  pre {
+    background: $color-code-bg;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    code {
+      background: none;
+      padding: 0;
+      color: #D4D4D4;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  }
+
+  img {
+    border-radius: 10px;
+    margin: 2rem auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  a { text-decoration: underline; text-underline-offset: 2px; }
+}
+
+// --- Post Navigation ---
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-top: 1px solid $color-border;
+  margin-top: 2rem;
+  gap: 1rem;
+
+  a {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}
+
+// --- Footer ---
+.site-footer {
+  margin-top: auto;
+  padding: 2.5rem 0;
+  border-top: 1px solid $color-border;
+  text-align: center;
+  color: $color-text-muted;
+  font-size: 0.82rem;
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.8rem;
+    a { color: $color-text-muted; &:hover { color: $color-accent; } }
+  }
+}
+
+// --- About Page ---
+.about-content {
+  padding: 3rem 0 4rem;
+  h1 { margin-bottom: 1.5rem; text-align: center; }
+  p { margin-bottom: 1.2rem; color: $color-text; }
+}
+
+// --- Search ---
+.search-container {
+  margin: 2rem 0;
+  input {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: $font-body;
+    background: $color-bg-card;
+    transition: border-color 0.2s;
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+    }
+  }
+}
+
+// --- Responsive ---
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+  .hero h1 { font-size: 2.2rem; }
+  .post-header h1 { font-size: 1.9rem; }
+  .header-inner { flex-direction: column; gap: 0.8rem; }
+  nav { gap: 1.2rem; }
+  .post-card { padding: 1.5rem; }
+}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Posts — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem;">
+  <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">All Posts</h1>
+  <p style="color: #6B6B6B; margin-bottom: 2rem;">The full build log — from first commit to production.</p>
+
+  <div class="posts-grid">
+    {% for post in paginator.pages %}
+    <article class="post-card">
+      <div class="post-meta">
+        <time datetime="{{ post.date }}">{{ post.date | date(format="%b %d, %Y") }}</time>
+        {% if post.taxonomies.tags %}
+          {% for tag in post.taxonomies.tags | slice(end=2) %}
+          <span class="post-tag">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+        {% if post.extra.reading_time %}
+        <span>{{ post.extra.reading_time }} min read</span>
+        {% endif %}
+      </div>
+      <h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      {% if post.description %}
+      <p>{{ post.description }}</p>
+      {% elif post.summary %}
+      <p>{{ post.summary | safe }}</p>
+      {% endif %}
+      <a href="{{ post.permalink }}" class="read-more">Continue reading</a>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if paginator.number_pagers > 1 %}
+  <nav style="display: flex; justify-content: center; gap: 1rem; padding: 2rem 0;">
+    {% if paginator.previous %}
+    <a href="{{ paginator.previous }}">&larr; Newer</a>
+    {% endif %}
+    <span style="color: #6B6B6B;">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}
+    <a href="{{ paginator.next }}">Older &rarr;</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+</section>
+{% endblock %}
