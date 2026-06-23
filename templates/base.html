@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config.default_language }}">
+<html lang="{{ lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,14 +27,23 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="{{ config.base_url }}" class="site-logo">
+      <a href="{% if lang == 'pt' %}{{ config.base_url }}/pt/{% else %}{{ config.base_url }}{% endif %}" class="site-logo">
         <span class="logo-mark">A</span>
         DevLog
       </a>
       <nav>
-        <a href="{{ get_url(path='@/blog/_index.md') }}" {% if current_path is starting_with("/blog") %}class="active"{% endif %}>Posts</a>
-        <a href="{{ get_url(path='@/about.md') }}" {% if current_path is starting_with("/about") %}class="active"{% endif %}>About</a>
+        <a href="{% if lang == 'pt' %}/pt/blog/{% else %}/blog/{% endif %}" {% if current_path is starting_with("/blog") or current_path is starting_with("/pt/blog") %}class="active"{% endif %}>{{ trans(key="posts", lang=lang) }}</a>
+        <a href="{% if lang == 'pt' %}/pt/about/{% else %}/about/{% endif %}" {% if current_path is starting_with("/about") or current_path is starting_with("/pt/about") %}class="active"{% endif %}>{{ trans(key="about", lang=lang) }}</a>
         <a href="{{ config.extra.github }}" target="_blank" rel="noopener">GitHub</a>
+        <span class="lang-switch">
+          {% if lang == "pt" %}
+          <a href="{{ current_url | replace(from='/pt/', to='/') }}" title="English">EN</a>
+          <span class="lang-active">PT</span>
+          {% else %}
+          <span class="lang-active">EN</span>
+          <a href="/pt{{ current_path }}" title="Português">PT</a>
+          {% endif %}
+        </span>
       </nav>
     </div>
   </header>

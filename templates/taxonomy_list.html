@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Tags — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem;">
+  <h1 style="font-size: 2rem; margin-bottom: 2rem;">Tags</h1>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+    {% for term in terms %}
+    <a href="{{ term.permalink }}" class="post-tag" style="font-size: 1rem; padding: 0.5rem 1rem;">
+      {{ term.name }} ({{ term.pages | length }})
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

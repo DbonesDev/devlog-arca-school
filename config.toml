@@ -2,11 +2,52 @@ base_url = "https://devlog.arca.school"
 title = "Arca School DevLog"
 description = "Where classical wisdom meets modern craft — building an education platform from the ground up."
 default_language = "en"
-theme = ""
 compile_sass = true
 generate_feeds = true
 feed_filenames = ["atom.xml"]
 build_search_index = true
+
+taxonomies = [
+    { name = "tags", feed = true, paginate_by = 10 },
+]
+
+[languages.pt]
+title = "Arca School DevLog"
+description = "Onde a sabedoria clássica encontra o ofício moderno — construindo uma plataforma de educação do zero."
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+build_search_index = true
+taxonomies = [
+    { name = "tags", feed = true, paginate_by = 10 },
+]
+
+[languages.pt.translations]
+posts = "Publicações"
+about = "Sobre"
+latest_posts = "Últimas Publicações"
+read_more = "Continuar a ler"
+all_posts = "Todas as Publicações"
+tags = "Tags"
+min_read = "min de leitura"
+hero_title_1 = "Construindo a"
+hero_title_2 = "em aberto."
+hero_description = "Uma plataforma de educação clássica construída com Rust, intenção e cuidado. Acompanha a jornada desde a arquitetura até ao deploy."
+hero_cta = "Ler o DevLog"
+build_log_subtitle = "O registo completo — do primeiro commit à produção."
+
+[translations]
+posts = "Posts"
+about = "About"
+latest_posts = "Latest Posts"
+read_more = "Continue reading"
+all_posts = "All Posts"
+tags = "Tags"
+min_read = "min read"
+hero_title_1 = "Building"
+hero_title_2 = "in the open."
+hero_description = "A classical education platform built with Rust, intention, and care. Follow the journey from architecture to deployment."
+hero_cta = "Read the DevLog"
+build_log_subtitle = "The full build log — from first commit to production."
 
 [markdown]
 highlight_code = true

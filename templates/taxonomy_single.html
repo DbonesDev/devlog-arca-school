@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}#{{ term.name }} — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="container" style="padding-top: 3rem;">
+  <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">#{{ term.name }}</h1>
+  <p style="color: #6B6B6B; margin-bottom: 2rem;">{{ term.pages | length }} post{{ term.pages | length | pluralize }}</p>
+
+  <div class="posts-grid">
+    {% for post in term.pages %}
+    <article class="post-card">
+      <div class="post-meta">
+        <time datetime="{{ post.date }}">{{ post.date | date(format="%b %d, %Y") }}</time>
+        {% if post.extra.reading_time %}
+        <span>{{ post.extra.reading_time }} min read</span>
+        {% endif %}
+      </div>
+      <h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      {% if post.description %}
+      <p>{{ post.description }}</p>
+      {% endif %}
+      <a href="{{ post.permalink }}" class="read-more">Continue reading</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

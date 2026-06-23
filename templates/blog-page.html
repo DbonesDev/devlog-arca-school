@@ -26,7 +26,7 @@
           {% endfor %}
         {% endif %}
         {% if page.reading_time %}
-        <span>{{ page.reading_time }} min read</span>
+        <span>{{ page.reading_time }} {{ trans(key="min_read", lang=lang) }}</span>
         {% endif %}
       </div>
       <h1>{{ page.title }}</h1>
